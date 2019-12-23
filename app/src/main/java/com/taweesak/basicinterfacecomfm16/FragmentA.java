@@ -16,11 +16,11 @@ public class FragmentA extends Fragment {
     EditText editTextA,editTextB;
     Button button;
     private RadioGroup radioGroupNb;
-    View radioButtonNb; // ใช้ Class View
+    View radioButtonView; // ใช้ Class View
 
     MyInterface listener;
     private int chkRadio;
-    MyChidModel myChidModel = new MyChidModel();
+    MyChidModel myChidModel;
 
     public FragmentA() {
         // Required empty public constructor
@@ -40,11 +40,11 @@ public class FragmentA extends Fragment {
                 try {
                     // check radio button id
                     checkRadioBtn(view);
-                    // input data
 
+                    // input data
                     double numA = Double.parseDouble(editTextA.getText().toString());
                     double numB = Double.parseDouble(editTextB.getText().toString());
-                    MyChidModel myChidModel = new MyChidModel(numA,numB,chkRadio);
+                    myChidModel = new MyChidModel(numA,numB,chkRadio);
 
                     listener.MyListener(myChidModel);
 
@@ -59,9 +59,9 @@ public class FragmentA extends Fragment {
 
     private void checkRadioBtn(View view) {
         int selectRadioBtn = radioGroupNb.getCheckedRadioButtonId();
-        radioButtonNb = radioGroupNb.findViewById(selectRadioBtn);
+        radioButtonView = radioGroupNb.findViewById(selectRadioBtn);
 
-        switch (radioButtonNb.getId()){
+        switch (radioButtonView.getId()){
             case R.id.radioPlus:
                 chkRadio = 0;
                 break;
