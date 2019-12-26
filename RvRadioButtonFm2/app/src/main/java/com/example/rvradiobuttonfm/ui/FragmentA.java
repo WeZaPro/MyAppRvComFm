@@ -1,16 +1,12 @@
-package com.example.basicinterfacecomfm19.ui;
+package com.example.rvradiobuttonfm.ui;
+
 
 import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,11 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.basicinterfacecomfm19.Model.MyModel;
-import com.example.basicinterfacecomfm19.Myinterface.itemCallback;
-import com.example.basicinterfacecomfm19.R;
-import com.example.basicinterfacecomfm19.adapter.MyAdapter;
-import com.example.basicinterfacecomfm19.viewModel.MyViewModel;
+import com.example.rvradiobuttonfm.Myinterface.itemCallback;
+import com.example.rvradiobuttonfm.R;
+import com.example.rvradiobuttonfm.adapter.MyAdapter;
+import com.example.rvradiobuttonfm.model.MyModel;
+import com.example.rvradiobuttonfm.viewModel.MyViewModel;
 
 import java.util.ArrayList;
 
@@ -60,8 +56,8 @@ public class FragmentA extends Fragment implements itemCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        if(v == null){
+
+        if(v == null){// แก้เรื่อง Back button แล้ว Duplicate recyclerView
 
             v = inflater.inflate(R.layout.fragment_a, container, false);
 
@@ -161,7 +157,9 @@ public class FragmentA extends Fragment implements itemCallback {
 
     @Override
     public void itemCallback(int position) {
+
         MyModel p = lstData.get(position);
+
         p.setChecked(true);
         for (int x = 0; x < lstData.size(); x++) {
             MyModel ship = lstData.get(x);
@@ -169,6 +167,7 @@ public class FragmentA extends Fragment implements itemCallback {
                 ship.setChecked(false);
             }
         }
+
         mAdapter.notifyDataSetChanged();
         recyclerView.refreshDrawableState();
 
@@ -177,10 +176,5 @@ public class FragmentA extends Fragment implements itemCallback {
         b.putParcelable("key",p);
         fragmentB.setArguments(b);
 
-        /*getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.contentContainer_main, fragmentB)
-                .addToBackStack("")
-                .commit();*/
     }
 }

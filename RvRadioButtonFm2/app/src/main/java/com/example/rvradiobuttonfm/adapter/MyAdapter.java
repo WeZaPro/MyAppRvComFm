@@ -1,4 +1,4 @@
-package com.example.basicinterfacecomfm19.adapter;
+package com.example.rvradiobuttonfm.adapter;
 
 import android.app.Activity;
 import android.util.Log;
@@ -13,10 +13,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.basicinterfacecomfm19.Model.MyModel;
-import com.example.basicinterfacecomfm19.Myinterface.itemCallback;
-import com.example.basicinterfacecomfm19.R;
-import com.example.basicinterfacecomfm19.viewModel.MyViewModel;
+
+import com.example.rvradiobuttonfm.Myinterface.itemCallback;
+import com.example.rvradiobuttonfm.R;
+import com.example.rvradiobuttonfm.model.MyModel;
+import com.example.rvradiobuttonfm.viewModel.MyViewModel;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
 
     private Activity context;
     private ArrayList<MyModel> mDataList;
-    /*private itemCallback mAdapterCallback;*/
     itemCallback mAdapterCallback;
-
     public MyViewModel viewModel;
 
 
@@ -93,16 +92,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
         }
     }
 
-    /*public interface itemCallback {
-        //onItemClick handler
-        void itemCallback(int position);
-    }*/
 
     private void updateCart(MyModel cartModel) {
         String txt = String.valueOf(cartModel.getCountry());
         //int imageFlags = cartModel.getImage();
         Log.d(TAG, "updateText: " + txt);
-        //Log.d(TAG, "updateImage: " + imageFlags);
 
         // setData to viewModel
         viewModel.setmString(cartModel);
