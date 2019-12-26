@@ -15,11 +15,14 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentA fragmentA = new FragmentA();
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.contentContainer_main,fragmentA)
-                .addToBackStack("")
-                .commit();
+        if(savedInstanceState == null){
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.contentContainer_main,fragmentA)
+                    .addToBackStack("")
+                    .commit();
+        }
+
 
     }
 }

@@ -28,12 +28,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
     private itemCallback mAdapterCallback;
     public MyViewModel viewModel;
 
+
     public MyAdapter(Activity context, ArrayList<MyModel> model, itemCallback adapterCallback) {
         this.context = context;
         this.mDataList = model;
         mAdapterCallback = adapterCallback;
 
-        //viewModel = ViewModelProviders.of(this).get(MyViewModel.class);
         viewModel = ViewModelProviders.of((FragmentActivity) context).get(MyViewModel.class);
     }
 
@@ -50,11 +50,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
 
         MyModel myModel = mDataList.get(position);
         holder._country.setText(mDataList.get(position).getCountry());
-        holder._rates.setText(""+mDataList.get(position).getRates());
+        holder._rates.setText("" + mDataList.get(position).getRates());
         //holder._imageFlag.setImageResource(mDataList.get(position).getImage());
         holder.itemView.setTag(position);
         holder.radioButton.setChecked(myModel.isChecked());
-
     }
 
     @Override
@@ -66,7 +65,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
     public class VH extends RecyclerView.ViewHolder {
 
         RadioButton radioButton;
-        TextView _country,_rates;
+        TextView _country, _rates;
         /*ImageView _imageFlag;*/
 
         public VH(@NonNull View itemView) {
@@ -101,8 +100,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.VH> {
         //int imageFlags = cartModel.getImage();
         Log.d(TAG, "updateText: " + txt);
         //Log.d(TAG, "updateImage: " + imageFlags);
-        //cartRepository.updateCartRepo(cartModel);
-         viewModel.setmString(cartModel);
+
+        // setData to viewModel
+        viewModel.setmString(cartModel);
 
     }
 }

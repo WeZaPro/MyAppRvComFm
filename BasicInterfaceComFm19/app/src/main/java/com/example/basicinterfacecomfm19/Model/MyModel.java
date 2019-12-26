@@ -7,6 +7,7 @@ public class MyModel implements Parcelable {
 
     // input value
     private double rates;
+    private double valueInput;
 
     // output value
     private String country;
@@ -16,9 +17,23 @@ public class MyModel implements Parcelable {
     public MyModel() {
     }
 
+    public MyModel(double rates, double valueInput, String country) {
+        this.rates = rates;
+        this.valueInput = valueInput;
+        this.country = country;
+    }
+
     public MyModel(double rates, String country) {
         this.rates = rates;
         this.country = country;
+    }
+
+    public void setValueInput(double valueInput) {
+        this.valueInput = valueInput;
+    }
+
+    public double getValueInput() {
+        return valueInput;
     }
 
     public String getCountry() {
